@@ -7,6 +7,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { MenuComponent } from './core/menu/menu.component';
 import { ProductListingComponent } from './features/product/product-listing/product-listing.component';
 import { ProductItemComponent } from './features/product/product-item/product-item.component';
+import { DropdownComponent } from './shared/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProductItemComponent } from './features/product/product-item/product-it
     FooterComponent,
     MenuComponent,
     ProductListingComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule

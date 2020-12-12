@@ -79,7 +79,7 @@
     <!-- items -->
     <div class="item-listing__items item-listing--3items">
       <!-- medium item -->
-      <app-product-item *ngFor="let productItem of products" [product]="productItem" class="item-medium-1"></app-product-item>
+      <app-product-item (itemAdded)="onOneItemAdded($event)"  *ngFor="let productItem of products" [product]="productItem" class="item-medium-1"></app-product-item>
     </div>
     <!-- paging -->
     <div class="paging">
