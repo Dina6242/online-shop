@@ -8,6 +8,7 @@ import { MenuComponent } from './core/menu/menu.component';
 import { ProductListingComponent } from './features/product/product-listing/product-listing.component';
 import { ProductItemComponent } from './features/product/product-item/product-item.component';
 import { DropdownComponent } from './shared/dropdown/dropdown.component';
+import { ShopingListComponent } from './features/shoping-list/shoping-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DropdownComponent } from './shared/dropdown/dropdown.component';
     MenuComponent,
     ProductListingComponent,
     ProductItemComponent,
-    DropdownComponent
+    DropdownComponent,
+    ShopingListComponent
   ],
   imports: [
     BrowserModule

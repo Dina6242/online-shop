@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../_model/product';
+import { getProductPrice } from '../../../_utilitites/utilitites';
+
 
 @Component({
   selector: 'app-product-item',
@@ -12,7 +14,7 @@ export class ProductItemComponent {
   constructor() {}
 
   getPrice(): number{
-    return this.product.discount ? this.product.price - this.product.discount : this.product.price;
+    return getProductPrice(this.product);
   }
   onItemAdding(): void{
     // save on database
