@@ -9,6 +9,7 @@ import { ProductListingComponent } from './features/product/product-listing/prod
 import { ProductItemComponent } from './features/product/product-item/product-item.component';
 import { DropdownComponent } from './shared/dropdown/dropdown.component';
 import { ShopingListComponent } from './features/shoping-list/shoping-list.component';
+import { ProductService } from './features/product/product.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ShopingListComponent } from './features/shoping-list/shoping-list.compo
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

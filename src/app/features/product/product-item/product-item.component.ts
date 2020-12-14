@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../_model/product';
 import { getProductPrice } from '../../../_utilitites/utilitites';
+import { ProductService } from '../product.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { getProductPrice } from '../../../_utilitites/utilitites';
 export class ProductItemComponent {
   @Input() product: Product;
   @Output()itemAdded = new  EventEmitter<Product>();
-  constructor() {}
+  constructor(public productservice: ProductService ) {}
 
   getPrice(): number{
     return getProductPrice(this.product);
@@ -19,5 +20,7 @@ export class ProductItemComponent {
   onItemAdding(): void{
     // save on database
     this.itemAdded.next(this.product);
+    this.productservice.shopingList.push(this.product);
+
   }
 }
