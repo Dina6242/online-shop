@@ -10,6 +10,8 @@ import { ProductItemComponent } from './features/product/product-item/product-it
 import { DropdownComponent } from './shared/dropdown/dropdown.component';
 import { ShopingListComponent } from './features/shoping-list/shoping-list.component';
 import { ProductService } from './features/product/product.service';
+import { TestComponent } from './test/test.component';
+import { ProductAddComponent } from './features/product/product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductService } from './features/product/product.service';
     ProductListingComponent,
     ProductItemComponent,
     DropdownComponent,
-    ShopingListComponent
+    ShopingListComponent,
+    TestComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule
