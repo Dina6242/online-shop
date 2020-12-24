@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -12,6 +13,7 @@ import { ShopingListComponent } from './features/shoping-list/shoping-list.compo
 import { ProductService } from './features/product/product.service';
 import { TestComponent } from './test/test.component';
 import { ProductAddComponent } from './features/product/product-add/product-add.component';
+import { ErrorPageComponent } from './core/core/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,19 @@ import { ProductAddComponent } from './features/product/product-add/product-add.
     DropdownComponent,
     ShopingListComponent,
     TestComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ErrorPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: '', redirectTo: 'product-listing', pathMatch: 'full'},
+      {path: 'product-listing', component: ProductListingComponent},
+      {path: 'product-add', component: ProductAddComponent},
+      {path: '**', component: ErrorPageComponent},
+
+
+    ]),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
