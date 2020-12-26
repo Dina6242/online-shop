@@ -1,9 +1,9 @@
  <div *ngIf="product.discount" class="item-medium-1__alert">Sale</div>
-  <div class="item-medium-1__image image" [style.background]="'url('+ product.imageUrl+')'">
+  <div class="item-medium-1__image image" [style.background]="'url('+ product.imageUrls+')'">
     <a href="#" class="item-medium-1__action" (click)="onItemAdding()">Add to Cart</a>
   </div>
   <a href="#">
-    <h4>{{product.title}}</h4>
+    <h4>{{product.data[0].title}}</h4>
     <div class="flex-row">
       <div>
         <del *ngIf="product.discount" >${{product.price}}</del>

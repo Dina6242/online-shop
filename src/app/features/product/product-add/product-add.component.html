@@ -1,5 +1,5 @@
 <div class=" container">
-  <form class="add-product" action="">
+  <form #myForm="ngForm" class="add-product" action="">
     <div class="add-product__images slider">
       <div class="add-product__image-actions">
         <div class="add-product__image-action">
@@ -34,14 +34,14 @@
             <div class="tabs__body active">
               <div class="form-group invalid">
                 <label for="">Name</label>
-                <input class="form-control" type="text" name="" id="">
+                <input #txtName [(ngModel)]="product.data[0].title" class="form-control" type="text" name="textName" id="">
               </div>
               <div class="form-group">
                 <label for="">Description</label>
-                <textarea class="form-control" name="" id="" cols="30" rows="4"></textarea>
+                <textarea #txtDescription ngModel class="form-control" name="textDescription" id="" cols="30" rows="4"></textarea>
               </div>
             </div>
-            <div class="tabs__body ">
+            <div class="tabs__body">
               <div class="form-group invalid">
                 <label for="">Name</label>
                 <input class="form-control" type="text" name="" id="">
@@ -56,50 +56,49 @@
 
         <div class="form-group">
           <label for="">Price</label>
-          <input class="form-control" type="text" name="" id="">
+          <input [(ngModel)]="product.price" class="form-control" type="text" name="txtPrice" id="">
         </div>
         <div class="add-product__discount">
           <div class="form-group">
             <label for="">Satus</label>
             <div class="form-group__radios">
-              <div class="form-group__radio"><input type="radio" name="" id=""><span>On Sale</span></div>
-              <div class="form-group__radio"><input type="radio" name="" id=""><span>Not On Sale</span></div>
+              <div class="form-group__radio"><input ngModel type="radio" name="radioSale" id=""><span>On Sale</span></div>
+              <div class="form-group__radio"><input ngModel type="radio" name="radioSale" id=""><span>Not On Sale</span></div>
             </div>
           </div>
           <div class="form-group">
             <label for="">Discount</label>
-            <input class="form-control" type="text" name="" id="">
+            <input ngModel="" class="form-control" type="text" name="txtDiscount" id="">
           </div>
         </div>
         <div class="form-group">
           <label for="">Payment Types</label>
           <div class="form-group__checkboxs">
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>Direct Bank
-                                    Transfare</span></div>
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>Cheque Payment</span></div>
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>Paypal</span></div>
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>Visa</span></div>
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>Mastercard</span></div>
-            <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>On Dilivery</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check0" id=""><span>Direct BankTransfare</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check1" id=""><span>Cheque Payment</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check2" id=""><span>Paypal</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check3" id=""><span>Visa</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check4" id=""><span>Mastercard</span></div>
+            <div class="form-group__checkbox"><input ngModel type="checkbox" name="check5" id=""><span>On Dilivery</span></div>
           </div>
         </div>
         <div class="form-group">
           <label for="">Category</label>
-          <select class="form-control" name="" id="">
-            <option value="">Arts & Crafts</option>
-            <option value="">Automotive</option>
-            <option value="">Baby</option>
-            <option value="">Books</option>
-            <option value="">Eletronics</option>
-            <option value="">Women's Fashion</option>
-            <option value="">Men's Fashion</option>
-            <option value="">Health & Household</option>
-            <option value="">Home & Kitchen</option>
-            <option value="">Military Accessories</option>
-            <option value="">Movies & Television</option>
-            <option value="">Sports & Outdoors</option>
-            <option value="">Tools & Home Improvement</option>
-            <option value="">Toys & Games</option>
+          <select ngModel class="form-control" name="ddlCategory" id="">
+            <option value="1">Arts & Crafts</option>
+            <option value="2">Automotive</option>
+            <option value="3">Baby</option>
+            <option value="4">Books</option>
+            <option value="5">Eletronics</option>
+            <option value="6">Women's Fashion</option>
+            <option value="7">Men's Fashion</option>
+            <option value="8">Health & Household</option>
+            <option value="9">Home & Kitchen</option>
+            <option value="10">Military Accessories</option>
+            <option value="11">Movies & Television</option>
+            <option value="12">Sports & Outdoors</option>
+            <option value="13">Tools & Home Improvement</option>
+            <option value="14">Toys & Games</option>
           </select>
         </div>
 
@@ -132,11 +131,11 @@
               <a href="#"><i class="fas fa-times"></i></a>
             </div>
           </div>
-          <input class="taged-textbox__textbox form-control" type="text" name="" id="">
+          <input ngModel class="taged-textbox__textbox form-control" type="text" name="txtTags" id="">
         </div>
         <div class="add-product__actions">
-          <button href="#" class="btn btn--gray">Cancel</button>
-          <button href="#" class="btn btn--primary">Add</button>
+          <button class="btn btn--gray" >Cancel</button>
+          <button (click)="onSubmit(myForm)" class="btn btn--primary">Add</button>
         </div>
       </div>
     </div>
