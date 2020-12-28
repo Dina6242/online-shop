@@ -7,6 +7,7 @@ import { PaymentTypeService } from '../../payment-type/payment-type.service';
 import { ProductCategory } from '../../../_model/product-category';
 import { PaymentType } from '../../../_model/payment-type';
 import { ProductCategoryService } from '../../product-category/product-category.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-add',
@@ -14,14 +15,15 @@ import { ProductCategoryService } from '../../product-category/product-category.
   styleUrls: ['./product-add.component.scss'],
 })
 export class ProductAddComponent implements OnInit {
-  product: Product = {price: 0};
+  product: Product = {data: [], price: 0, category: {}};
   langs: Lang[];
   paymentType: PaymentType[];
   categories: ProductCategory[];
   currentLang = 0;
 
   // @ViewChild('txtName', {static: false}) txtName: ElementRef;
-  constructor(private langService: LangService,
+  constructor(private productService: ProductService,
+              private langService: LangService,
               private  paymentTypeService: PaymentTypeService,
               private productCategory: ProductCategoryService) {
   }

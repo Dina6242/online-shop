@@ -5,11 +5,11 @@ import { Tag } from './tag';
 import { Lang } from './lang';
 
 export interface Product {
-  data?: Data[];
+  data: Data[];
   imageUrls?: string[];
   price: number;
   discount?: number;
   paymentType?: PaymentType[];
-  category?: ProductCategory;
+  category: ProductCategory;
   tags?: Tag[];
 }
