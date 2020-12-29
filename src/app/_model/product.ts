@@ -5,6 +5,7 @@ import { Tag } from './tag';
 import { Lang } from './lang';
 
 export interface Product {
+  id?: number;
   data: Data[];
   imageUrls?: string[];
   price: number;

@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../_model/product';
 import { LangService } from '../../lang/lang.service';
 import { Lang } from '../../../_model/lang';
@@ -8,6 +7,7 @@ import { ProductCategory } from '../../../_model/product-category';
 import { PaymentType } from '../../../_model/payment-type';
 import { ProductCategoryService } from '../../product-category/product-category.service';
 import { ProductService } from '../product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-add',
@@ -20,33 +20,37 @@ export class ProductAddComponent implements OnInit {
   paymentType: PaymentType[];
   categories: ProductCategory[];
   currentLang = 0;
-
-  // @ViewChild('txtName', {static: false}) txtName: ElementRef;
+  productId: number;
   constructor(private productService: ProductService,
               private langService: LangService,
               private  paymentTypeService: PaymentTypeService,
-              private productCategory: ProductCategoryService) {
+              private productCategory: ProductCategoryService,
+              private router: Router,
+              private activatedRout: ActivatedRoute  ) {
   }
 
   ngOnInit(): void {
+    this.productId = +this.activatedRout.snapshot.params.id;
     this.langs = this.langService.gatAll();
     this.paymentType = this.paymentTypeService.getAll();
     this.categories = this.productCategory.gatAll();
-    this.product.category = {};
-    this.product.paymentType = [];
-    this.product.tags = [];
-    this.product.data = [];
-    for (const lang of this.langs) {
-      this.product.data.push({});
+    if (this.productId){
+      this.product = this.productService.getById(this.productId);
+    }else {
+      this.product.category = {};
+      this.product.paymentType = [];
+      this.product.tags = [];
+      this.product.data = [];
+      for (const lang of this.langs) {
+        this.product.data.push({});
+      }
     }
   }
 
-  onSubmit(myForm: NgForm): void {
-    console.log(this.product);
-    // console.log(myForm);
-    // const product: Product = {
-    //  data : [{title: myForm.value.textName , description: myForm.value.textDescription  }]
-    // };
+  onSubmit(): void {
+    this.productService.add(this.product);
+    this.router.navigate(['/product-listing']);
+
   }
 
   onPaymentTypeChecked(event: MouseEvent): void {

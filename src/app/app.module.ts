@@ -37,10 +37,9 @@ import { ErrorPageComponent } from './core/core/error-page/error-page.component'
       {path: '', redirectTo: 'product-listing', pathMatch: 'full'},
       {path: 'product-listing', component: ProductListingComponent},
       {path: 'product-add', component: ProductAddComponent},
+      {path: 'product-edit/:id', component: ProductAddComponent},
       {path: '**', component: ErrorPageComponent},
-
-
-    ]),
+    ], { scrollPositionRestoration: 'top'}),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
