@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -32,7 +32,7 @@ import { ErrorPageComponent } from './core/core/error-page/error-page.component'
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: '', redirectTo: 'product-listing', pathMatch: 'full'},
       {path: 'product-listing', component: ProductListingComponent},

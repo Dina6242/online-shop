@@ -1,5 +1,5 @@
 <div class=" container">
-  <form #myForm="ngForm" class="add-product" action="">
+  <form [formGroup]="myForm" class="add-product" action="">
     <div class="add-product__images slider">
       <div class="add-product__image-actions">
         <div class="add-product__image-action">
@@ -34,16 +34,16 @@
             <div *ngFor="let lang of langs; let i=index" class="tabs__body" [ngClass]="{'active': currentLang === i}">
               <div class="form-group">
                 <label for="">Name</label>
-                <input [(ngModel)]="product.data[i].title" class="form-control" type="text" name="textName" id="">
+                <input class="form-control" type="text" name="textName" id="">
               </div>
               <div class="form-group">
                 <label for="">Description</label>
-                <textarea [(ngModel)]="product.data[i].description"
-                          class="form-control"
-                          name="textDescription"
-                          id=""
-                          cols="30"
-                          rows="4"></textarea>
+                <textarea
+                  class="form-control"
+                  name="textDescription"
+                  id=""
+                  cols="30"
+                  rows="4"></textarea>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
 
         <div class="form-group">
           <label for="">Price</label>
-          <input [(ngModel)]="product.price" class="form-control" type="text" name="txtPrice" id="">
+          <input [formControl]= "price"  class="form-control" type="text" name="txtPrice">
         </div>
         <div class="add-product__discount">
           <div class="form-group">
@@ -63,7 +63,7 @@
           </div>
           <div class="form-group">
             <label for="">Discount</label>
-            <input [(ngModel)]="product.discount" class="form-control" type="text" name="txtDiscount" id="">
+            <input class="form-control" type="text" name="txtDiscount" id="">
           </div>
         </div>
         <div class="form-group">
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group">
           <label for="">Category</label>
-          <select [(ngModel)]="product.category.id" class="form-control" name="ddlCategory" id="">
+          <select class="form-control" name="ddlCategory" id="">
             <option *ngFor="let category of categories " [value]="category.id">{{category.title}}</option>
           </select>
         </div>
