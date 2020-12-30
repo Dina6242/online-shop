@@ -8,7 +8,7 @@ import { PaymentType } from '../../../_model/payment-type';
 import { ProductCategoryService } from '../../product-category/product-category.service';
 import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-add',
@@ -34,8 +34,11 @@ export class ProductAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.langs = this.langService.gatAll();
+    this.paymentType = this.paymentTypeService.getAll();
+    this.categories = this.productCategory.gatAll();
     this.myForm = new FormGroup({
-      data: new FormArray([]),
+      data: new FormArray(this.getLang()),
       imageUrls: new FormArray([]),
       price: this.price,
       discount: new FormControl(),
@@ -44,11 +47,8 @@ export class ProductAddComponent implements OnInit {
       tags: new FormArray([]),
     });
 
-
     // this.productId = +this.activatedRout.snapshot.params.id;
-    // this.langs = this.langService.gatAll();
-    // this.paymentType = this.paymentTypeService.getAll();
-    // this.categories = this.productCategory.gatAll();
+
     // if (this.productId){
     //   this.product = this.productService.getById(this.productId);
     // }else {
@@ -60,6 +60,16 @@ export class ProductAddComponent implements OnInit {
     //     this.product.data.push({});
     //   }
     // }
+  }
+  get tags(): FormArray{
+    return (this.myForm.get('tags') as FormArray);
+  }
+  getLang(): AbstractControl[] {
+    const result: AbstractControl[] = [];
+    for (const lang of this.langs) {
+      result.push(new FormGroup({title: new FormControl(), description: new FormControl()}));
+    }
+    return result;
   }
 
   onSubmit(): void {

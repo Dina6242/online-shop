@@ -21,7 +21,7 @@
     </div>
     <div class="add-product__data">
       <div class="form-controls">
-        <section class="tabs">
+        <section class="tabs" formArrayName="data">
           <div class="tabs__headers">
             <div (click)="currentLang = i"
                  *ngFor="let lang of langs; let i= index"
@@ -31,15 +31,19 @@
             </div>
           </div>
           <div class="tabs__bodies">
-            <div *ngFor="let lang of langs; let i=index" class="tabs__body" [ngClass]="{'active': currentLang === i}">
+            <div [formGroupName]="i"
+                 *ngFor="let lang of langs; let i=index"
+                 class="tabs__body"
+                 [ngClass]="{'active': currentLang === i}">
               <div class="form-group">
                 <label for="">Name</label>
-                <input class="form-control" type="text" name="textName" id="">
+                <input class="form-control" formControlName="title" type="text" name="textName" id="">
               </div>
               <div class="form-group">
                 <label for="">Description</label>
                 <textarea
                   class="form-control"
+                  formControlName="description"
                   name="textDescription"
                   id=""
                   cols="30"
@@ -51,7 +55,7 @@
 
         <div class="form-group">
           <label for="">Price</label>
-          <input [formControl]= "price"  class="form-control" type="text" name="txtPrice">
+          <input [formControl]="price" class="form-control" type="text" name="txtPrice">
         </div>
         <div class="add-product__discount">
           <div class="form-group">
@@ -63,7 +67,7 @@
           </div>
           <div class="form-group">
             <label for="">Discount</label>
-            <input class="form-control" type="text" name="txtDiscount" id="">
+            <input formControlName="discount" class="form-control" type="text" name="txtDiscount" id="">
           </div>
         </div>
         <div class="form-group">
@@ -76,16 +80,16 @@
         </div>
         <div class="form-group">
           <label for="">Category</label>
-          <select class="form-control" name="ddlCategory" id="">
+          <select formControlName="category" class="form-control" name="ddlCategory" id="">
             <option *ngFor="let category of categories " [value]="category.id">{{category.title}}</option>
           </select>
         </div>
 
-        <div class="taged-textbox form-group">
+        <div class="taged-textbox form-group" formArrayName="tags">
           <label class="taged-textbox__lable" for="">Tags</label>
           <div class="taged-textbox__data">
             <div class="taged-textbox__tags">
-              <div *ngFor="let tag of product.tags" class="taged-textbox__tag"><span>{{tag.title}}</span><a href="#"
+              <div *ngFor="let tag of tags.controls" class="taged-textbox__tag"><span>{{tag.value}}</span><a href="#"
                                                                                                             class="taged-textbox__remove"><i
                 class="fas fa-times"></i></a></div>
             </div>
